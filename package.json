@@ -1,0 +1,27 @@
+{
+  "name": "serverheaders",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fiat-token/serverHeaders.git"
+  },
+  "keywords": [
+    "blockchain",
+    "headers"
+  ],
+  "author": "Calogero Mandracchia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fiat-token/serverHeaders/issues"
+  },
+  "homepage": "https://github.com/fiat-token/serverHeaders#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "node-fetch": "^1.7.3"
+  }
+}
