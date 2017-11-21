@@ -2,7 +2,7 @@
 
 require('dotenv').load();
 const RPC = require('./rpc');
-const Bitcoin = require('./Bitcoin');
+const Bitcoin = require('./bitcoin');
 const { range } = require('./util');
 
 const connectionParams =
