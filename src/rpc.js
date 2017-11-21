@@ -2,18 +2,23 @@
 
 const fetchPromise = require('node-fetch');
 
-class callRPC
+class RPC
 {
     constructor(connectionParams) 
     {
+        if(connectionParams.user == undefined) throw new Error("no user has been given");
+        if(connectionParams.password == undefined) throw new Error("no password has been given");
+        if(connectionParams.socket == undefined) throw new Error("no socket has been given");
+
         this.user = connectionParams.user;
         this.password = connectionParams.password;
         this.header = { 'Authorization': this.getBasicAuth(this.user, this.password) };
         this.socket = connectionParams.socket;
         this.counter = 0;
-        console.log("user: " + this.user);
-        console.log("password: " + this.password);
-        console.log("socket: " + this.socket);
+        console.log("RPC-user: " + this.user);
+        console.log("RPC-password: " + this.password);
+        console.log("RPC-socket: " + this.socket);
+        console.log();
     }
 
     async fetch(method = '', param = [])
@@ -56,4 +61,4 @@ class callRPC
     }
 }
 
-module.exports = callRPC;
+module.exports = RPC;
