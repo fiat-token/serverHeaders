@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 require('dotenv').load();
 const getHeaderFile = require('./createHeader');
+const getTransactions = require('./getTransactions');
 
-
-const route = async (req, res) =>
+const routeHeader = async (req, res) =>
 {
     try
     {
@@ -21,6 +21,25 @@ const route = async (req, res) =>
     }
 }
 
-router.get('/blockchain_headers', route);
+const routeTransactions = async (req, res) =>
+{
+    try
+    {
+        const socketDest =  req.client.remoteAddress + ":" + req.client.remotePort;
+        console.log("API download: request from: " + socketDest);
+        res.send( await getTransactions() );
+        console.log("API download success: " + socketDest);
+    }
+    catch(err)
+    {
+        console.log(err);  
+        res.status(500);
+        res.send(err);
+    }
+}
 
-module.exports = router;
+router.get('/blockchain_headers', routeHeader);
+router.get('/blockchain_transactions', routeTransactions);
+
+module.exports = routeHeader;
+module.exports = routeTransactions;

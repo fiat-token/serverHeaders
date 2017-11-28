@@ -27,6 +27,19 @@ class Bitcoin
         const rawHeader = await this.client.fetch('getblockheader', [hashBlockHeader, raw]);
         return rawHeader;
     }
+
+    async getBlock (hash = '') 
+    {
+        const block = await this.client.fetch('getblock', [hash]);
+        return block;
+    }
+
+    async getRawTransaction (txid = '') 
+    {
+        const tx = await this.client.fetch('getrawtransaction', [txid, 1]);
+        return tx;
+    }
+
 }
 
 module.exports = Bitcoin;
